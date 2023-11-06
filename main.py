@@ -36,7 +36,7 @@ def removerTarefa():
     removerPrint()
     listarTarefas2()
     indice = int(input('\nDigite qual tarefa você deseja remover: '))
-    tarefas[indice] = None
+    del tarefas[indice]
     choice = int(input('Deseja remover outra tarefa?\n1 - Sim | 2 - Não'))
     if choice == 1:
         removerTarefa()
