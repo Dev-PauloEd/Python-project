@@ -32,7 +32,7 @@ def adicionarTarefa():
         print('Erro')
     
 # Função para remover um item da lista
-def removerTarefa():
+def teste():
     removerPrint()
     listarTarefas2()
     indice = int(input('\nDigite qual tarefa você deseja remover: '))
@@ -44,6 +44,34 @@ def removerTarefa():
         main()
     else:
         print('erro')
+
+def removerTarefa():
+    removerPrint()
+    listarTarefas2()
+    
+    if len(tarefas) == 0:
+        print("A lista de tarefas está vazia.")
+        main()
+        return
+    
+    try:
+        indice = int(input('\nDigite qual tarefa você deseja remover: ')) - 1  # Subtrai 1 do índice para corresponder ao índice da lista (que começa em 0)
+        
+        if 0 <= indice < len(tarefas):
+            del tarefas[indice]
+            choice = int(input('Tarefa removida com sucesso!\nDeseja remover outra tarefa?\n1 - Sim | 2 - Não: '))
+            if choice == 1:
+                removerTarefa()
+            elif choice == 2:
+                main()
+            else:
+                print('Erro')
+        else:
+            print('Índice fora dos limites da lista.')
+            removerTarefa()
+    except ValueError:
+        print("Entrada inválida. Digite um número válido.")
+        removerTarefa()
 
 
 # Função para limpar o console
