@@ -5,9 +5,23 @@ import time
 
 tarefas = []
 
-def listarTarefas2():
-    for i, (tarefa) in enumerate(tarefas, 1):
-        print(f'{i}. {tarefa}')
+# Função principal que funciona como uma espécie de "Menu"
+def main():
+    removerPrint()
+    valor = input('Agendador de tarefas\nSelecione a opção:\n1 - listar tarefas | 2 - adicionar tarefa | 3 - remover tarefa\n')
+    
+    if valor == '1':
+        listarTarefas()
+    elif valor == '2':
+        adicionarTarefa()
+    elif valor == '3':
+        removerTarefa()
+    else:
+        removerPrint()
+        print('Erro! Coloque algum valor')
+        time.sleep(2)
+        main()
+
 
 def listarTarefas():
     removerPrint()
@@ -22,6 +36,12 @@ def listarTarefas():
             print(f'{i}. {tarefa}\n') # VERSÃO JAVASCRIPT --> console.log(`${i}. ${tarefa} (Data: ${data})`)
         input('Pressione \'Enter\' para voltar para o menu.')
     main()
+
+
+def listarTarefas2():
+    for i, (tarefa) in enumerate(tarefas, 1):
+        print(f'{i}. {tarefa}')
+
 
 def adicionarTarefa():
     removerPrint()
@@ -45,20 +65,6 @@ def adicionarTarefa():
         time.sleep(1)
         main()
         
-    
-# Função para remover um item da lista
-def teste():
-    removerPrint()
-    listarTarefas2()
-    indice = int(input('\nDigite qual tarefa você deseja remover: '))
-    del tarefas[indice]
-    choice = input('Deseja remover outra tarefa?\n1 - Sim | 2 - Não')
-    if choice == '1':
-        removerTarefa()
-    elif choice == '2':
-        main()
-    else:
-        print('erro')
 
 def removerTarefa():
     removerPrint()
@@ -90,26 +96,25 @@ def removerTarefa():
         removerTarefa()
 
 
+# Função para remover um item da lista
+# def teste():
+#     removerPrint()
+#     listarTarefas2()
+#     indice = int(input('\nDigite qual tarefa você deseja remover: '))
+#     del tarefas[indice]
+#     choice = input('Deseja remover outra tarefa?\n1 - Sim | 2 - Não')
+#     if choice == '1':
+#         removerTarefa()
+#     elif choice == '2':
+#         main()
+#     else:
+#         print('erro')
+
+
 # Função para limpar o console
 def removerPrint():
     # Este módulo escreve um código no console. Neste caso, o comando é o 'cls'
     subprocess.run(["cls"], shell=True) # limpa o console (funciona)
 
-# Função principal que funciona como uma espécie de "Menu"
-def main():
-    removerPrint()
-    valor = input('Agendador de tarefas\nSelecione a opção:\n1 - listar tarefas | 2 - adicionar tarefa | 3 - remover tarefa\n')
-    
-    if valor == '1':
-        listarTarefas()
-    elif valor == '2':
-        adicionarTarefa()
-    elif valor == '3':
-        removerTarefa()
-    else:
-        removerPrint()
-        print('Erro! Coloque algum valor')
-        time.sleep(2)
-        main()
 
 main()
